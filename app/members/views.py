@@ -26,17 +26,6 @@ class AuthTokenView(APIView):
 
 class UserCreateView(APIView):
     def post(self, request):
-        # serializer = UserSerializer(data=request.data)
-        # serializer.is_valid(raise_exception=True)
-        # user = serializer.validated_data['user']
-        # token, _ = Token.objects.get_or_create(user=user)
-        #
-        # data = {
-        #     'token': token.key,
-        #     'user': UserSerializer(user).data
-        # }
-        # return Response(data)
-
         serializer = UserSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = serializer.save()
@@ -47,3 +36,13 @@ class UserCreateView(APIView):
             return Response(json, status=status.HTTP_201_CREATED)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+class UserListView(generics.ListAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
+
+
+class UserDetailView(generics.RetrieveAPIView):
+    queryset = User.objects.all()
+    serializer_class = UserSerializer
