@@ -19,7 +19,6 @@ ROOT_DIR = os.path.dirname(BASE_DIR)
 
 STATIC_URL = '/static/'
 # STATIC_ROOT = os.path.join(ROOT_DIR, '.static_root')
-
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 STATICFILES_DIRS = [
     STATIC_DIR,
@@ -27,7 +26,6 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
-
 
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 
@@ -57,6 +55,14 @@ SUPERUSER_EMAIL = secrets_base['SUPERUSER_EMAIL']
 # * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -67,7 +73,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    # custom app
+    # Thirdparty app
+    'rest_framework',
+    'rest_framework.authtoken',
+
+    # Custom app
     'members',
 ]
 
