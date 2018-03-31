@@ -1,10 +1,13 @@
-from rest_framework import status
+from django.contrib.auth import get_user_model
+from rest_framework import status, generics
 from rest_framework.authtoken.models import Token
 from rest_framework.authtoken.serializers import AuthTokenSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from members.serializers import UserSerializer
+
+User = get_user_model()
 
 
 class AuthTokenView(APIView):

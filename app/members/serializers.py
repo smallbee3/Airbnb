@@ -22,11 +22,16 @@ class UserSerializer(serializers.ModelSerializer):
         #     # 'is_facebookuser',
         # )
 
-    def create(self, validated_data):
-        user = User.objects.create_user(
-            username=validated_data.get('email'),
-            email=validated_data.get('email'),
-            password=validated_data.get('password'),
-        )
-        return user
+    # def create(self, validated_data):
+    #     user = User.objects.create_user(
+    #         username=validated_data.get('email'),
+    #         email=validated_data.get('email'),
+    #         password=validated_data.get('password'),
+    #     )
+    #     return user
 
+    def create(self, validated_data):
+        user = super().create(validated_data)
+        user.username = user.email
+        user.save()
+        return user

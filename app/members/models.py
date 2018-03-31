@@ -6,7 +6,7 @@ from django.dispatch import receiver
 
 class User(AbstractUser):
     # username field overwriting : blank=True
-    username = models.CharField(max_length=30, unique=True, blank=True)
+    username = models.CharField(max_length=30, unique=True, blank=True, null=True)
     email = models.EmailField(unique=True)
 
     name = models.CharField(max_length=30)
