@@ -17,6 +17,8 @@ class User(AbstractUser):
     is_host = models.BooleanField(default=False)
     is_facebookuser = models.BooleanField(default=False)
 
+    def __str__(self):
+        return ''
 
 # @receiver(pre_save, sender=User)
 # def save_email_to_username(sender, instance, using, **kwargs):
