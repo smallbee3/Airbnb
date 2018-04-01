@@ -11,7 +11,7 @@ class User(AbstractUser):
 
     name = models.CharField(max_length=30)
     img_profile = models.ImageField(upload_to='user', blank=True, null=True)
-    phone_num = models.CharField(max_length=20, blank=True)
+    phone_num = models.CharField(max_length=20, blank=True, null=True)
     # phone_num = models.CharField(max_length=20, unique=True)
 
     is_host = models.BooleanField(default=False)

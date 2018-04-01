@@ -16,10 +16,10 @@ class UserAdmin(DjangoUserAdmin):
             'email',
             'img_profile',
 
-            # 'name',
-            # 'phone_num',
-            # 'is_host',
-            # 'ist_facebookuser',
+            'name',
+            'phone_num',
+            'is_host',
+            'is_facebookuser',
         )}),
         ('권한', {'fields': (
             'is_active',
